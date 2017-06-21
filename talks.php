@@ -16,7 +16,7 @@ panel()->routes(array(
       // somehow the reference to the form only works this way
       // __DIR__ . DS . 'form.php' does not seem to work
 
-      $form = $parent->form('../../../../site/plugins/talks/form', function($form) use($parent, $self) {
+      $form = $parent->form(str_repeat('..' . DS, 4) . 'site' . DS . 'plugins' . DS . 'talks' . DS . 'form', function($form) use($parent, $self) {
 
         try {
 
