@@ -1,5 +1,7 @@
 <?php
 
+if(!function_exists('panel')) return;
+
 panel()->routes(array(
   array(
     'pattern' => 'pages/talks/add',
