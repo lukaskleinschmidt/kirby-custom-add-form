@@ -4,11 +4,11 @@ if(!function_exists('panel')) return;
 
 panel()->routes(array(
   array(
-    'pattern' => 'pages/home/add',
+    'pattern' => 'pages/talks/add',
     'action'  => function() {
 
       $controller = new Kirby\Panel\Controllers\Base();
-      $parent     = panel()->page('home');
+      $parent     = panel()->page('talks');
 
       if($parent->ui()->create() === false) {
         throw new PermissionsException();
