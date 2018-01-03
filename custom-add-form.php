@@ -4,17 +4,25 @@ if(!function_exists('panel')) return;
 
 panel()->routes(array(
   array(
-    'pattern' => 'pages/talks/add',
-    'action'  => function() {
+    'pattern' => 'pages/(:any)/add',
+    'action'  => function($id) use($template) {
+      $panel  = panel();
+      $parent = $panel->page($id);
+
+      // call the default controller
+      if($parent->intendedTemplate() !== '[template-name]') {
+        require_once $panel->roots()->controllers() . DS . 'pages.php';
+        $controller = new PagesController();
+        return $controller->add($id);
+      }
 
       $controller = new Kirby\Panel\Controllers\Base();
-      $parent     = panel()->page('talks');
 
       if($parent->ui()->create() === false) {
         throw new PermissionsException();
       }
 
-      $form = panel()->form(__DIR__ . DS . 'form.php', $parent, function($form) use($parent, $controller) {
+      $form = $panel->form(__DIR__ . DS . 'form.php', $parent, function($form) use($parent, $controller) {
         try {
 
           $form->validate();
