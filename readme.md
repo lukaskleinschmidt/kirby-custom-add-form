@@ -12,4 +12,4 @@ site/plugins/
         ...
 ```
 
-Change `[template-name]` (line 13) to whatever template you want to modify the add form in the `custom-add-form.php` file.
+Change `[template-name]` on line 13 to whatever template you want to modify the add form in the `custom-add-form.php` file.
