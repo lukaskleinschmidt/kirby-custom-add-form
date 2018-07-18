@@ -5,7 +5,7 @@ if(!function_exists('panel')) return;
 panel()->routes(array(
   array(
     'pattern' => 'pages/(:any)/add',
-    'action'  => function($id) use($template) {
+    'action'  => function($id) {
       $panel  = panel();
       $parent = $panel->page($id);
 
